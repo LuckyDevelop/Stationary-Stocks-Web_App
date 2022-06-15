@@ -1,0 +1,22 @@
+.container-fluid {
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+}
+
+.collapse {
+    justify-content: center;
+    display: flex;
+}
+
+.card {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 4px;
+    text-align: center;
+}

@@ -7,19 +7,24 @@
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
              </div>
              <div class="modal-body">
-                 <div class="form-floating mb-3">
-                     <input type="text" class="form-control" id="floatingSupplierName" placeholder="Supplier Name">
-                     <label for="floatingSupplierName">Supplier Name</label>
-                 </div>
-                 <div class="form-floating mb-3">
-                     <input type="text" class="form-control" id="floatingaddress" placeholder="Address">
-                     <label for="floatingaddress">Address</label>
-                 </div>
+                 <form action="{{ url('/supplier/add') }}" method="POST">
+                     @csrf
+                     <div class="form-floating mb-3">
+                         <input type="text" class="form-control" id="floatingSupplierName"
+                             placeholder="Supplier Name" name="supp_name">
+                         <label for="floatingSupplierName">Supplier Name</label>
+                     </div>
+                     <div class="form-floating mb-3">
+                         <input type="text" class="form-control" id="floatingaddress" placeholder="Address"
+                             name="address">
+                         <label for="floatingaddress">Address</label>
+                     </div>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <button type="button" class="btn btn-primary">Save changes</button>
+                 <button type="Submit" class="btn btn-primary">Save changes</button>
              </div>
+             </form>
          </div>
      </div>
  </div>

@@ -42,7 +42,11 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Supplier::create([
+            'supp_name' => $request->supp_name,
+            'address' => $request->address
+        ]);
+        return redirect('/supplier');
     }
 
     /**

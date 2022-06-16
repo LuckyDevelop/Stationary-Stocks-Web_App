@@ -9,13 +9,10 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
-<<<<<<< HEAD
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
-        "realrashid/sweet-alert": "^5.1"
-=======
+        "realrashid/sweet-alert": "^5.1",
         "laravel/tinker": "^2.7"
->>>>>>> 3a3da69552656047b786811b38e24814efa4e5a8
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

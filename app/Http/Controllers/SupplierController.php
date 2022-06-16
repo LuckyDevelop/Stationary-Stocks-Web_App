@@ -16,18 +16,12 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = Supplier::latest();
         if (request('search') == null || request('search') == " ") {
             $suppliers = Supplier::latest()->paginate(2);
         } else {
-
-            // dd('test');
             $suppliers = Supplier::latest()->where('supp_name', 'like', '%' . request('search') . '%')->paginate(2);
         }
         return view('suppliers.supplier', compact('suppliers'));
-        // return view('suppliers.supplier', [
-        //     "suppliers" => $suppliers->get()
-        // ]);
     }
 
     /**
@@ -37,7 +31,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('suppliers.create');
+        //
     }
 
     /**

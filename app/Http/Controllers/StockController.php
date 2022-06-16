@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -13,7 +14,18 @@ class StockController extends Controller
      */
     public function index()
     {
-        return view('stock');
+        $stocks = Stock::orderBy('stock_name', 'asc')->paginate(20);
+        if (request('search') == null || request('search') == " ") {
+            $stocks = Stock::orderBy('stock_name', 'asc')->paginate(20);
+        } else {
+            $search = request('search');
+            $stocks = Stock::orderBy('stock_name', 'asc')->where('stock_name', 'like', '%' . $search . '%')
+                ->orWhereHas("Type", function ($query) use ($search) {
+                    $query->where('type_name', 'like', '%' . $search . '%');
+                })
+                ->paginate(20);
+        }
+        return view('stocks.stock', compact('stocks'));
     }
 
     /**

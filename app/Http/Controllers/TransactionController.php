@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -13,7 +14,15 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('transaction');
+        if (request('search') == null || request('search') == " ") {
+            $transactions = Transaction::latest()->paginate(20);
+        } else {
+            $search = request('search');
+            $transactions = Transaction::latest()->whereHas('Stocks', function ($query) use ($search) {
+                $query->where('stock_name', 'like', '%' . $search . '%');
+            });
+        }
+        return view('transactions.transaction', compact('transactions'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buying;
 use Illuminate\Http\Request;
 
 class BuyingController extends Controller
@@ -13,7 +14,19 @@ class BuyingController extends Controller
      */
     public function index()
     {
-        return view('buying');
+        if (request('search') == null || request('search') == " ") {
+            $buyings = Buying::latest()->paginate(20);
+        } else {
+            $search = request('search');
+            $buyings = Buying::whereHas("Stock", function ($query) use ($search) {
+                $query->where('stock_name', 'like', '%' . $search . '%');
+            })
+                ->orWhereHas("Supplier", function ($query) use ($search) {
+                    $query->where('supp_name', 'like', '%' . $search . '%');
+                })->paginate(20);
+            // dd($buyings);
+        }
+        return view('buyings.buying', compact('buyings'));
     }
 
     /**

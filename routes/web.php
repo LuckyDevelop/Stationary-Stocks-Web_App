@@ -27,7 +27,8 @@ Route::get('/usages', [TransactionController::class, 'index']);
 
 Route::controller(SupplierController::class)->group(function () {
     Route::get('/supplier', [SupplierController::class, 'index']);
-    Route::get('/supplier/Add', [SupplierController::class, 'create']);
+    Route::get('/supplier/edit/{id}', [SupplierController::class, 'edit']);
     Route::post('/supplier/add', [SupplierController::class, 'store']);
-    Route::delete('/supplier/{id}', [SupplierController::class, 'destroy']);
+    Route::delete('/supplier/{id}', 'destroy');
+    Route::get('/save', 'create');
 });

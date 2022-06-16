@@ -2,9 +2,8 @@
     <x-navbar></x-navbar>
     <div class="row">
         <div class="container my-1 col-sm-7">
-            <x-table>
-                <h2>Add Suppliers</h2>
-            </x-table>
+            @include('transactions.data')
         </div>
     </div>
+    @include('modal.usage.usagemodal')
 </x-main>

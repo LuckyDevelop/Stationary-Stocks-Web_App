@@ -1,7 +1,7 @@
 <div class="container my-5 col-sm-6">
     <div class="card">
         <div class="card-header">
-            Greeting's
+            To User's
         </div>
         <div class="card-body">
             {{ $slot }}

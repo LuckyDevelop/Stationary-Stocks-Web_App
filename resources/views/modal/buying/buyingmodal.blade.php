@@ -17,8 +17,6 @@
                      <label for="floatingSelect">Item Name</label>
                  </div>
 
-
-
                  <div class="form-floating mb-3">
                      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
                          <option selected> </option>

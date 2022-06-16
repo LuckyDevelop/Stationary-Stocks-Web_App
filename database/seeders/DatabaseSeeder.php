@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+<<<<<<< HEAD
 
         $this->call([
             QtySeeder::class,
@@ -29,5 +30,7 @@ class DatabaseSeeder extends Seeder
             TransactionSeeder::class,
             BuyingSeeder::class,
         ]);
+=======
+>>>>>>> 3a3da69552656047b786811b38e24814efa4e5a8
     }
 }

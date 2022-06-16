@@ -1,6 +1,9 @@
 <?php
 
+<<<<<<< HEAD
 use Carbon\Carbon;
+=======
+>>>>>>> 3a3da69552656047b786811b38e24814efa4e5a8
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -83,7 +86,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'locale' => 'id',
+=======
+    'locale' => 'en',
+>>>>>>> 3a3da69552656047b786811b38e24814efa4e5a8
 
     /*
     |--------------------------------------------------------------------------
@@ -211,7 +218,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+<<<<<<< HEAD
         'Carbon' => Carbon::class,
+=======
+>>>>>>> 3a3da69552656047b786811b38e24814efa4e5a8
     ])->toArray(),
 
 ];

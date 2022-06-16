@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "c374ebd486facee15e8e5ad2a4d1e570",
+=======
+    "content-hash": "1abc7822bd9f28e9a62986817bf04f76",
+>>>>>>> 3a3da69552656047b786811b38e24814efa4e5a8
     "packages": [
         {
             "name": "brick/math",
@@ -1599,6 +1603,7 @@
             "time": "2022-04-17T13:12:02+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "livewire/livewire",
             "version": "v2.10.5",
             "source": {
@@ -1672,6 +1677,8 @@
             "time": "2022-04-07T21:38:12+00:00"
         },
         {
+=======
+>>>>>>> 3a3da69552656047b786811b38e24814efa4e5a8
             "name": "monolog/monolog",
             "version": "2.7.0",
             "source": {
@@ -2804,6 +2811,7 @@
             "time": "2022-03-27T21:42:02+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "realrashid/sweet-alert",
             "version": "v5.1.0",
             "source": {
@@ -2894,6 +2902,8 @@
             "time": "2022-05-28T13:28:03+00:00"
         },
         {
+=======
+>>>>>>> 3a3da69552656047b786811b38e24814efa4e5a8
             "name": "symfony/console",
             "version": "v6.1.1",
             "source": {

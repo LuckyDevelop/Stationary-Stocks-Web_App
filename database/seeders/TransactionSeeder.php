@@ -21,17 +21,15 @@ class TransactionSeeder extends Seeder
         Transaction::insert([
             [
                 'stock_id' => '1',
+                'user_usage_id' => '1',
                 'qty' => '1',
                 'transaction_date' => '2022-06-14',
-                'user' => 'Bambang',
-                'uom' => 'Rim'
             ],
             [
                 'stock_id' => '2',
+                'user_usage_id' => '3',
                 'qty' => '1',
                 'transaction_date' => '2022-06-10',
-                'user' => 'Nini',
-                'uom' => 'Liter',
             ]
         ]);
     }

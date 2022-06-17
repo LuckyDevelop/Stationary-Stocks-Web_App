@@ -16,13 +16,15 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('stock_id');
+            // $table->unsignedInteger('qty_id');
+            $table->unsignedInteger('user_usage_id');
             $table->integer('qty');
-            $table->string('uom');
-            $table->string('user');
             $table->date('transaction_date');
             $table->timestamps();
 
+            // $table->foreign('qty_id')->references('id')->on('qtys')->onDelete('cascade');
             $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('cascade');
+            $table->foreign('user_usage_id')->references('id')->on('user_usages')->onDelete('cascade');
         });
     }
 

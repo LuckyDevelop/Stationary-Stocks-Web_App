@@ -6,5 +6,7 @@
         </div>
     </div>
     @include('modal.buying.buyingmodal')
-    {{ $buyings->links() }}
+    <div class="pagination">
+        {{ $buyings->links() }}
+    </div>
 </x-main>

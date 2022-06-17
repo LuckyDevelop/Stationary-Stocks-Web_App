@@ -20,14 +20,12 @@ class StockSeeder extends Seeder
         Stock::truncate();
         Stock::insert([
             [
-                'supp_id' => '1',
                 'qty_id' => '3',
                 'type_id' => '1',
                 'stock_name' => 'Kertas A4',
                 'qty' => '5',
             ],
             [
-                'supp_id' => '2',
                 'qty_id' => '1',
                 'type_id' => '2',
                 'stock_name' => 'Minyak',

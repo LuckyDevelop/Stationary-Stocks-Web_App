@@ -17,7 +17,7 @@ class SupplierController extends Controller
     public function index()
     {
         if (request('search') == null || request('search') == " ") {
-            $suppliers = Supplier::latest()->paginate(2);
+            $suppliers = Supplier::latest()->paginate(10);
         } else {
             $suppliers = Supplier::latest()->where('supp_name', 'like', '%' . request('search') . '%')->paginate(2);
         }

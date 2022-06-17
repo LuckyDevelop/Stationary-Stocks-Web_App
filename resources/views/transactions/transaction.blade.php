@@ -5,5 +5,8 @@
             @include('transactions.data')
         </div>
     </div>
-    @include('modal.usage.usagemodal')
+    @include('modal.usage.addmodal')
+    <div class="pagination">
+        {{ $transactions->links() }}
+    </div>
 </x-main>

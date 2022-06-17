@@ -10,9 +10,5 @@
     <div class="pagination" style="margin-left:40%">
         {{ $suppliers->links() }}
     </div>
-    <script>
-        $(document).ready(function() {
-            $('.pagination').parent().addClass("");
-        });
-    </script>
+    <script src="js/supplier.js"></script>
 </x-main>

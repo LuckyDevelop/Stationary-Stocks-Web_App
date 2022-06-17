@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Qty;
 use App\Models\Stock;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -14,6 +16,8 @@ class StockController extends Controller
      */
     public function index()
     {
+        $locations = Type::all();
+        $uoms = Qty::all();
         $stocks = Stock::orderBy('stock_name', 'asc')->paginate(20);
         if (request('search') == null || request('search') == " ") {
             $stocks = Stock::orderBy('stock_name', 'asc')->paginate(20);
@@ -25,7 +29,7 @@ class StockController extends Controller
                 })
                 ->paginate(20);
         }
-        return view('stocks.stock', compact('stocks'));
+        return view('stocks.stock', compact('stocks', 'uoms', 'locations'));
     }
 
     /**
@@ -46,7 +50,21 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $validate = $request->validate([
+        //     "stock_name" => 'required',
+        //     "qty_id" => 'required',
+        //     "type_id" => 'required',
+        //     "qty" => 0,
+        // ]);
+        Stock::create([
+            "stock_name" => $request->stock_name,
+            "qty_id" => $request->qty_name,
+            "type_id" => $request->type_name,
+            "qty" => 0,
+        ]);
+
+        // Stock::create($validate);
+        return redirect('/stock');
     }
 
     /**

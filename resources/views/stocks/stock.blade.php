@@ -5,6 +5,8 @@
             @include('stocks.data')
         </div>
     </div>
-    @include('modal.stock.stockmodal')
-    {{ $stocks->links() }}
+    @include('modal.stock.addmodal')
+    <div class="pagination">
+        {{ $stocks->links() }}
+    </div>
 </x-main>

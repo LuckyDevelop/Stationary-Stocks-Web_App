@@ -15,4 +15,9 @@ class Qty extends Model
     {
         return $this->hasMany(Stock::class, 'qty_id', 'id');
     }
+
+    function Usage()
+    {
+        return $this->hasMany(Transaction::class, 'qty_id', 'id');
+    }
 }

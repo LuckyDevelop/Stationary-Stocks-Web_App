@@ -31,8 +31,8 @@
                 <td>{{ Carbon::parse($usage->transaction_date)->isoFormat('D MMMM Y') }}</td>
                 <td>{{ $usage->Stock->stock_name }}</td>
                 <td>{{ $usage->qty }}</td>
-                <td>{{ $usage->uom }}</td>
-                <td>{{ $usage->user }}</td>
+                <td>{{ $usage->Stock->Qty->uom }}</td>
+                <td>{{ $usage->UserUsage->user }}</td>
             </tr>
         @empty
             <x-alert></x-alert>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Qty;
+use App\Models\Stock;
+use App\Models\UserUsage;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TransactionController extends Controller
 {
@@ -14,15 +18,18 @@ class TransactionController extends Controller
      */
     public function index()
     {
+        $uoms = Qty::all();
+        $stocks = Stock::all();
+        $userusage = UserUsage::all();
         if (request('search') == null || request('search') == " ") {
-            $transactions = Transaction::latest()->paginate(20);
+            $transactions = Transaction::orderBy('transaction_date', 'desc')->paginate(20);
         } else {
             $search = request('search');
-            $transactions = Transaction::latest()->whereHas('Stocks', function ($query) use ($search) {
+            $transactions = Transaction::orderBy('transaction_date')->whereHas('Stock', function ($query) use ($search) {
                 $query->where('stock_name', 'like', '%' . $search . '%');
             });
         }
-        return view('transactions.transaction', compact('transactions'));
+        return view('transactions.transaction', compact('transactions', 'stocks', 'userusage', 'uoms'));
     }
 
     /**
@@ -43,7 +50,21 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        Transaction::insert([
+            "stock_id" => $request->stock_name,
+            "user_usage_id" => $request->user,
+            "qty" => $request->qty,
+            "transaction_date" => $request->date,
+        ]);
+
+        $stock = Stock::find($request->stock_name);
+        $qtystock = $stock->qty - $request->qty;
+
+        $stock->update([
+            "qty" => $qtystock
+        ]);
+        return redirect('/usages');
     }
 
     /**
@@ -77,7 +98,6 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

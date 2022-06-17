@@ -11,12 +11,12 @@
                      @csrf
                      <div class="form-floating mb-3">
                          <input type="text" class="form-control" id="floatingSupplierName"
-                             placeholder="Supplier Name" name="supp_name">
+                             placeholder="Supplier Name" name="supp_name" required>
                          <label for="floatingSupplierName">Supplier Name</label>
                      </div>
                      <div class="form-floating mb-3">
                          <input type="text" class="form-control" id="floatingaddress" placeholder="Address"
-                             name="address">
+                             name="address" required>
                          <label for="floatingaddress">Address</label>
                      </div>
              </div>

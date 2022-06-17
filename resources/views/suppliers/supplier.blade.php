@@ -7,6 +7,12 @@
     </div>
     @include('modal.supplier.addmodal')
     @include('modal.supplier.editmodal')
-    {{ $suppliers->links() }}
-    <script></script>
+    <div class="pagination" style="margin-left:40%">
+        {{ $suppliers->links() }}
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('.pagination').parent().addClass("");
+        });
+    </script>
 </x-main>

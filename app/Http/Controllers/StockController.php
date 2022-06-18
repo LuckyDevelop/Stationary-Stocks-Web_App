@@ -18,16 +18,16 @@ class StockController extends Controller
     {
         $locations = Type::all();
         $uoms = Qty::all();
-        $stocks = Stock::orderBy('stock_name', 'asc')->paginate(20);
+        // $stocks = Stock::orderBy('stock_name', 'asc')->paginate(5);
         if (request('search') == null || request('search') == " ") {
-            $stocks = Stock::orderBy('stock_name', 'asc')->paginate(20);
+            $stocks = Stock::orderBy('stock_name', 'asc')->paginate(5);
         } else {
             $search = request('search');
             $stocks = Stock::orderBy('stock_name', 'asc')->where('stock_name', 'like', '%' . $search . '%')
                 ->orWhereHas("Type", function ($query) use ($search) {
                     $query->where('type_name', 'like', '%' . $search . '%');
                 })
-                ->paginate(20);
+                ->paginate(5);
         }
         return view('stocks.stock', compact('stocks', 'uoms', 'locations'));
     }
@@ -50,12 +50,6 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        // $validate = $request->validate([
-        //     "stock_name" => 'required',
-        //     "qty_id" => 'required',
-        //     "type_id" => 'required',
-        //     "qty" => 0,
-        // ]);
         Stock::create([
             "stock_name" => $request->stock_name,
             "qty_id" => $request->qty_name,
@@ -98,7 +92,7 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
     }
 
     /**
@@ -109,6 +103,7 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Stock::find($id)->delete();
+        return redirect('/stock');
     }
 }

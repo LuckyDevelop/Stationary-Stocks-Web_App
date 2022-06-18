@@ -28,6 +28,7 @@
                 <td>{{ $supplier->address }}</td>
                 <td>
                     <x-buttonedit target="#edit"></x-buttonedit>
+                    {{-- <a href="supplier/edit/{{ $supplier->id }}">Edit</a> --}}
                 </td>
                 <td>
                     <form action="/supplier/{{ $supplier->id }}" method="POST">
@@ -40,5 +41,6 @@
         @empty
             <x-alert></x-alert>
         @endforelse
+        <script></script>
     </tbody>
 </x-table>

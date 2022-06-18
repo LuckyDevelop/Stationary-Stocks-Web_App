@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buying;
+use App\Models\Qty;
+use App\Models\Stock;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class BuyingController extends Controller
@@ -14,8 +17,11 @@ class BuyingController extends Controller
      */
     public function index()
     {
+        $stocks = Stock::all();
+        $qtys = Qty::all();
+        $suppliers = Supplier::all();
         if (request('search') == null || request('search') == " ") {
-            $buyings = Buying::latest()->paginate(20);
+            $buyings = Buying::orderBy('transaction_date', 'desc')->paginate(5);
         } else {
             $search = request('search');
             $buyings = Buying::whereHas("Stock", function ($query) use ($search) {
@@ -23,10 +29,10 @@ class BuyingController extends Controller
             })
                 ->orWhereHas("Supplier", function ($query) use ($search) {
                     $query->where('supp_name', 'like', '%' . $search . '%');
-                })->paginate(20);
+                })->paginate(5);
             // dd($buyings);
         }
-        return view('buyings.buying', compact('buyings'));
+        return view('buyings.buying', compact('buyings', 'stocks', 'qtys', 'suppliers'));
     }
 
     /**
@@ -47,7 +53,22 @@ class BuyingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Buying::insert([
+            "supp_id" => $request->supplier,
+            "stock_id" => $request->stock_name,
+            "transaction_date" => $request->date,
+            "qty" => $request->qty,
+            "price" => $request->price,
+            "total" => $request->qty * $request->price,
+        ]);
+
+        $stock = Stock::find($request->stock_name);
+        $qtystock = $stock->qty + $request->qty;
+
+        $stock->update([
+            "qty" => $qtystock
+        ]);
+        return redirect('/buying');
     }
 
     /**

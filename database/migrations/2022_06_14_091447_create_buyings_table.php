@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('supp_id');
             $table->unsignedInteger('stock_id');
+            $table->date('transaction_date');
             $table->integer('qty');
-            $table->string('uom');
             $table->integer('price');
+            $table->integer('total');
             $table->timestamps();
 
             $table->foreign('supp_id')->references('id')->on('suppliers')->onDelete('cascade');

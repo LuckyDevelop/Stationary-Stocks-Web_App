@@ -15,9 +15,11 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Item</th>
+            <th scope="col">Last Buy</th>
             <th scope="col">Qty</th>
             <th scope="col">UoM</th>
-            <th scope="col">Price</th>
+            <th scope="col">Price/UoM</th>
+            <th scope="col">Total</th>
             <th scope="col">Supplier</th>
         </tr>
     </thead>
@@ -28,9 +30,11 @@
                     {{ $key + $buyings->firstitem() }}
                 </th>
                 <td>{{ $buying->Stock->stock_name }}</td>
+                <td>{{ Carbon::parse($buying->transaction_date)->isoFormat('D MMMM Y') }}</td>
                 <td>{{ $buying->qty }}</td>
-                <td>{{ $buying->uom }}</td>
+                <td>{{ $buying->Stock->Qty->uom }}</td>
                 <td>Rp {{ number_format($buying->price, 0, '.', '.') }}</td>
+                <td>Rp {{ number_format($buying->total, 0, '.', '.') }}</td>
                 <td>{{ $buying->Supplier->supp_name }}</td>
             </tr>
         @empty

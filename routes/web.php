@@ -22,8 +22,10 @@ Route::get('/', function () {
     return view('main');
 });
 
-
-Route::get('/buying', [BuyingController::class, 'index']);
+Route::controller(BuyingController::class)->group(function () {
+    Route::get('/buying', 'index');
+    Route::post('/buyings/add', 'store');
+});
 
 Route::controller(TransactionController::class)->group(function () {
     Route::get('/usages', 'index');
@@ -33,6 +35,7 @@ Route::controller(TransactionController::class)->group(function () {
 Route::controller(StockController::class)->group(function () {
     Route::get('/stock', 'index');
     Route::post('/stock/add', 'store');
+    Route::delete('/stock/{id}', 'destroy');
 });
 
 Route::controller(SupplierController::class)->group(function () {

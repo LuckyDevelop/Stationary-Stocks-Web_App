@@ -18,6 +18,8 @@
             <th scope="col">Qty</th>
             <th scope="col">UoM</th>
             <th scope="col">Location</th>
+            <th scope="col" colspan="2">Setting</th>
+
         </tr>
     </thead>
     <tbody>
@@ -28,9 +30,19 @@
                     {{ $i++ }}
                 </th>
                 <td>{{ $stock->stock_name }}</td>
-                <td>{{ $stock->qty }}</td>
+                <td id="qty">{{ $stock->qty }}</td>
                 <td>{{ $stock->Qty->uom }}</td>
                 <td>{{ $stock->Type->type_name }}</td>
+                <td>
+                    <x-buttonedit target="#edit"></x-buttonedit>
+                </td>
+                <td>
+                    <form action="/supplier/{{ $stock->id }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger" id="button">Delete</button>
+                    </form>
+                </td>
             </tr>
         @empty
             <x-alert></x-alert>

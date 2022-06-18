@@ -37,18 +37,6 @@
                          <label for="floatingSelect">Item Name | Qty Stock | UoM</label>
                      </div>
 
-                     {{-- <div class="form-floating mb-3">
-                         <input type="text" class="form-control" id="floatingUoM" placeholder="UoM" name="uom"
-                             style="pointer-events: none" value="{{ $stock->Qty->uom }}">
-                         <label for="floatingQtyItem">UoM</label>
-                     </div>
-
-                     <div class="form-floating mb-3">
-                         <input type="text" class="form-control" id="floatingQtyItem" placeholder="QtyItem"
-                             name="qtyitem" style="pointer-events: none" value="{{ $stock->qty }}">
-                         <label for="floatingQtyItem">Qty Item</label>
-                     </div> --}}
-
                      <div class="form-floating mb-3">
                          <input type="number" class="form-control" id="floatingNumber" placeholder="Qty" name="qty"
                              required>

@@ -22,12 +22,15 @@ class TransactionController extends Controller
         $stocks = Stock::all();
         $userusage = UserUsage::all();
         if (request('search') == null || request('search') == " ") {
-            $transactions = Transaction::orderBy('transaction_date', 'desc')->paginate(20);
+            $transactions = Transaction::orderBy('transaction_date', 'desc')->paginate(10);
         } else {
             $search = request('search');
-            $transactions = Transaction::orderBy('transaction_date')->whereHas('Stock', function ($query) use ($search) {
-                $query->where('stock_name', 'like', '%' . $search . '%');
-            });
+            $transactions = Transaction::orderBy('transaction_date', 'desc')
+                ->where('transaction_date', 'like', '%' . $search . '%')
+                ->orWhereHas("Stock", function ($query) use ($search) {
+                    $query->where('stock_name', 'like', '%' . $search . '%');
+                })
+                ->paginate(10);
         }
         return view('transactions.transaction', compact('transactions', 'stocks', 'userusage', 'uoms'));
     }

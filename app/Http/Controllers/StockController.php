@@ -18,16 +18,15 @@ class StockController extends Controller
     {
         $locations = Type::all();
         $uoms = Qty::all();
-        // $stocks = Stock::orderBy('stock_name', 'asc')->paginate(5);
         if (request('search') == null || request('search') == " ") {
-            $stocks = Stock::orderBy('stock_name', 'asc')->paginate(5);
+            $stocks = Stock::orderBy('stock_name', 'asc')->paginate(10);
         } else {
             $search = request('search');
             $stocks = Stock::orderBy('stock_name', 'asc')->where('stock_name', 'like', '%' . $search . '%')
                 ->orWhereHas("Type", function ($query) use ($search) {
                     $query->where('type_name', 'like', '%' . $search . '%');
                 })
-                ->paginate(5);
+                ->paginate(10);
         }
         return view('stocks.stock', compact('stocks', 'uoms', 'locations'));
     }

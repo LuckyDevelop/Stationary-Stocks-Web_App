@@ -17,9 +17,12 @@ class SupplierController extends Controller
     public function index()
     {
         if (request('search') == null || request('search') == " ") {
-            $suppliers = Supplier::latest()->paginate(10);
+            $suppliers = Supplier::orderBy('supp_name', 'asc')->paginate(10);
         } else {
-            $suppliers = Supplier::latest()->where('supp_name', 'like', '%' . request('search') . '%')->paginate(2);
+            $search = request('search');
+            $suppliers = Supplier::orderBy('supp_name', 'asc')->where('supp_name', 'like', '%' . $search . '%')
+                ->orWhere('address', 'like', '%' . $search . '%')
+                ->paginate(10);
         }
         return view('suppliers.supplier', compact('suppliers'));
     }

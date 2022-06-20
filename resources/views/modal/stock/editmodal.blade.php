@@ -10,36 +10,20 @@
                  <form action="/stock/update/{{ $stock->id }}" method="POST">
                      @csrf
                      @method('PUT')
-                     <div class="form-floating mb-3">
-                         <input type="text" class="form-control" id="floatingItemName" placeholder="Item Name"
-                             name="stock_name" value="{{ $stock->stock_name }}" required>
-                         <label for="floatingItemName">Item Name</label>
-                     </div>
-                     <div class="form-floating mb-3" hidden>
-                        <input type="text" class="form-control" id="floatingItemName" placeholder="Item Name"
-                            name="qty" value="{{ $stock->qty }}">
-                        <label for="floatingItemName">Qty Item</label>
-                    </div>
-                     <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                            name="qty_name" required>
-                            <option selected value="{{ $stock->Qty->id }}"> {{ $stock->Qty->uom }}</option>
-                            @foreach ($uoms as $uom)
-                                <option value="{{ $uom->id }}">{{ $uom->uom }}</option>
-                            @endforeach
-                        </select>
-                        <label for="floatingSelect">UoM</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                            name="type_name" required>
-                            <option selected>{{ $stock->Type->type_name }}</option>
-                            @foreach ($locations as $location)
-                                <option value="{{ $location->id }}">{{ $location->type_name }}</option>
-                            @endforeach
-                        </select>
-                        <label for="floatingSelect">Location</label>
-                    </div>
+                     <x-inputedit type="text" placeholder="Item Name" name="stock_name" value="{{ $stock->stock_name }}">Item Name</x-inputedit>
+                     <x-inputeditdisabled type="text" placeholder="Qty Item" name="qty" value="{{ $stock->qty }}">Qty Item</x-inputeditdisabled>
+                     <x-optionselect name="qty_name" label="UoM">
+                        <option selected value="{{ $stock->Qty->id }}"> {{ $stock->Qty->uom }}</option>
+                        @foreach ($uoms as $uom)
+                            <option value="{{ $uom->id }}">{{ $uom->uom }}</option>
+                        @endforeach
+                     </x-optionselect>
+                     <x-optionselect name="type_name" label="Location">
+                        <option selected>{{ $stock->Type->type_name }}</option>
+                        @foreach ($locations as $location)
+                            <option value="{{ $location->id }}">{{ $location->type_name }}</option>
+                        @endforeach
+                     </x-optionselect>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -9,29 +9,17 @@
              <div class="modal-body">
                  <form action="{{ url('/stock/add') }}" method="POST">
                      @csrf
-                     <div class="form-floating mb-3">
-                         <input type="text" class="form-control" id="floatingItemName" placeholder="Item Name"
-                             name="stock_name" required>
-                         <label for="floatingItemName">Item Name</label>
-                     </div>
-                     <div class="form-floating mb-3">
-                         <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                             name="qty_name" required>
-                             @foreach ($uoms as $uom)
-                                 <option value="{{ $uom->id }}">{{ $uom->uom }}</option>
-                             @endforeach
-                         </select>
-                         <label for="floatingSelect">UoM</label>
-                     </div>
-                     <div class="form-floating mb-3">
-                         <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                             name="type_name" required>
-                             @foreach ($locations as $location)
-                                 <option value="{{ $location->id }}">{{ $location->type_name }}</option>
-                             @endforeach
-                         </select>
-                         <label for="floatingSelect">Location</label>
-                     </div>
+                     <x-input type="text" placeholder="Item Name" name="stock_name">Item Name</x-input>
+                     <x-optionselect name="qty_name" label="UoM" >
+                        @foreach ($uoms as $uom)
+                        <option value="{{ $uom->id }}">{{ $uom->uom }}</option>
+                        @endforeach
+                     </x-optionselect>
+                    <x-optionselect name="type_name" label="Location">
+                        @foreach ($locations as $location)
+                        <option value="{{ $location->id }}">{{ $location->type_name }}</option>
+                        @endforeach
+                    </x-optionselect>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

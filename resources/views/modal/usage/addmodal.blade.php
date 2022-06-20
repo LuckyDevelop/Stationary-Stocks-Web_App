@@ -10,38 +10,19 @@
                  <form action="{{ url('/usages/add') }}" method="POST">
                      @csrf
 
-                     <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                            name="user" required>
-                            @foreach ($userusage as $usage)
-                                <option value="{{ $usage->id }}">{{ $usage->user }}</option>
-                            @endforeach
-                        </select>
-                        <label for="floatingSelect">User</label>
-                    </div>
-
-                     <div class="form-floating mb-3">
-                         <input type="date" class="form-control" id="date" placeholder="Date Usage"
-                             name="date" required>
-                         <label for="floatingItemName">Date</label>
-                     </div>
-
-                     <div class="form-floating mb-3">
-                         <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                             name="stock_name" required>
-                             @foreach ($stocks as $stock)
-                                 <option value="{{ $stock->id }}">{{ $stock->stock_name }} |
-                                     {{ $stock->qty }} | {{ $stock->Qty->uom }}</option>
-                             @endforeach
-                         </select>
-                         <label for="floatingSelect">Item Name | Qty Stock | UoM</label>
-                     </div>
-
-                     <div class="form-floating mb-3">
-                         <input type="number" class="form-control" id="floatingNumber" placeholder="Qty" name="qty"
-                             required>
-                         <label for="floatingItemName">Qty Usage</label>
-                     </div>
+                     <x-optionselect name="user" label="User">
+                        @foreach ($userusage as $usage)
+                        <option value="{{ $usage->id }}">{{ $usage->user }}</option>
+                        @endforeach
+                     </x-optionselect>
+                     <x-input type="date" name="date" placeholder="Date Usage">Date</x-input>
+                     <x-optionselect name="stock_name" label="Item Name | Qty Stock | UoM">
+                        @foreach ($stocks as $stock)
+                        <option value="{{ $stock->id }}">{{ $stock->stock_name }} |
+                            {{ $stock->qty }} | {{ $stock->Qty->uom }}</option>
+                        @endforeach
+                     </x-optionselect>
+                    <x-input type="number" placeholder="Qty" name="qty">Qty Usage</x-input>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

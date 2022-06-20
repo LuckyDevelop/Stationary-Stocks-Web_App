@@ -9,16 +9,8 @@
              <div class="modal-body">
                  <form action="{{ url('/supplier/add') }}" method="POST">
                      @csrf
-                     <div class="form-floating mb-3">
-                         <input type="text" class="form-control" id="floatingSupplierName"
-                             placeholder="Supplier Name" name="supp_name" required>
-                         <label for="floatingSupplierName">Supplier Name</label>
-                     </div>
-                     <div class="form-floating mb-3">
-                         <input type="text" class="form-control" id="floatingaddress" placeholder="Address"
-                             name="address" required>
-                         <label for="floatingaddress">Address</label>
-                     </div>
+                     <x-input type="text" placeholder="Supplier Name" name="supp_name">Supplier Name</x-input>
+                     <x-input type="text" placeholder="Address" name="address">Address</x-input>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

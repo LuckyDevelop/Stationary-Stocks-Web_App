@@ -7,7 +7,7 @@
                 Add Supplier
             </x-buttonadd>
         </x-containerfluid>
-        <x-formsearch target="#/supplier">
+        <x-formsearch id="search" function="searchData()">
             <x-buttonsearch></x-buttonsearch>
         </x-formsearch>
     </x-navbarsub>
@@ -29,19 +29,14 @@
                 <td>{{ $supplier->address }}</td>
                 <td>
                     <x-buttonedit target="#edit-{{ $supplier->id }}"></x-buttonedit>
-                    {{-- <a href="supplier/edit/{{ $supplier->id }}">Edit</a> --}}
                 </td>
                 <td>
-                    <form action="/supplier/{{ $supplier->id }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    <x-formdelete action="/supplier/{{ $supplier->id }}" class="btn btn-danger"></x-formdelete>
                 </td>
             </tr>
         @empty
             <x-alert></x-alert>
         @endforelse
-        <script></script>
+        <script src="js/supplier.js"></script>
     </tbody>
 </x-table>

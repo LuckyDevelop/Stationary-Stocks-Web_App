@@ -4,7 +4,7 @@
         <div class="container my-1 col-sm-7">
             @include('suppliers.data')
         </div>
-    </div>
+    </div id="data">
     @include('modal.supplier.addmodal')
 
     <div class="pagination" style="margin-left:40%">

@@ -10,16 +10,8 @@
                  <form action="/supplier/edit/{{ $supplier->id }}" method="POST">
                     @csrf
                     @method('put')
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="supp_name" name="supp_name"
-                             placeholder="Supplier Name" value="{{ $supplier->supp_name  }}" required>
-                         <label for="suppliername">Supplier Name</label>
-                     </div>
-                     <div class="form-floating mb-3">
-                         <input type="text" class="form-control" id="address" name="address" placeholder="Address"
-                         value="{{ $supplier->address }}" required>
-                         <label for="address">Address</label>
-                     </div>
+                    <x-inputedit type="text" name="supp_name" placeholder="Supplier Name" value="{{ $supplier->supp_name }}">Supplier Name</x-inputedit>
+                    <x-inputedit type="text" name="address" placeholder="Address" value="{{ $supplier->address }}">Address</x-inputedit>
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

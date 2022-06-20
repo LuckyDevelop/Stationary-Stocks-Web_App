@@ -30,7 +30,7 @@
                     {{ $i++ }}
                 </th>
                 <td>{{ $stock->stock_name }}</td>
-                <td id="qty">{{ $stock->qty }}</td>
+                <td>{{ $stock->qty }}</td>
                 <td>{{ $stock->Qty->uom }}</td>
                 <td>{{ $stock->Type->type_name }}</td>
                 <td>
@@ -38,19 +38,11 @@
                 </td>
                 @if ($stock->qty == 0)
                     <td>
-                        <form action="/stock/{{ $stock->id }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger" id="button">Delete</button>
-                        </form>
+                        <x-formdelete action="/stock/{{ $stock->id }}" class="btn btn-danger"></x-formdelete>
                     </td>
                 @else
                     <td>
-                        <form action="/stock/{{ $stock->id }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger disabled" id="button">Delete</button>
-                        </form>
+                        <x-formdelete action="/stock/{{ $stock->id }}" class="btn btn-danger disabled"></x-formdelete>
                     </td>
                 @endif
             </tr>

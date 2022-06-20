@@ -7,10 +7,9 @@
                 Add Usages
             </x-buttonadd>
         </x-containerfluid>
-        <form class="" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <x-formsearch target="#/search">
             <x-buttonsearch></x-buttonsearch>
-        </form>
+        </x-formsearch>
     </x-navbarsub>
     <thead>
         <tr>

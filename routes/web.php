@@ -35,12 +35,13 @@ Route::controller(TransactionController::class)->group(function () {
 Route::controller(StockController::class)->group(function () {
     Route::get('/stock', 'index');
     Route::post('/stock/add', 'store');
+    Route::put('/stock/update/{id}', 'update');
     Route::delete('/stock/{id}', 'destroy');
 });
 
 Route::controller(SupplierController::class)->group(function () {
     Route::get('/supplier', 'index');
-    Route::get('/supplier/edit/{id}', 'edit');
+    Route::put('/supplier/edit/{id}', 'edit');
     Route::post('/supplier/add', 'store');
     Route::delete('/supplier/{id}', 'destroy');
     Route::get('/save', 'create');

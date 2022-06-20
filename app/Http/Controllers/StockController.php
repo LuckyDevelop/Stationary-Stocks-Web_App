@@ -92,7 +92,14 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // 
+        Stock::find($id)->update([
+            "stock_name" => $request->stock_name,
+            "qty_id" => $request->qty_name,
+            "type_id" => $request->type_name,
+            "qty" => $request->qty,
+        ]);
+
+        return redirect('/stock');
     }
 
     /**

@@ -34,16 +34,27 @@
                 <td>{{ $stock->Qty->uom }}</td>
                 <td>{{ $stock->Type->type_name }}</td>
                 <td>
-                    <x-buttonedit target="#edit"></x-buttonedit>
+                    <x-buttonedit target="#edit-{{ $stock->id }}"></x-buttonedit>
                 </td>
-                <td>
-                    <form action="/supplier/{{ $stock->id }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger" id="button">Delete</button>
-                    </form>
-                </td>
+                @if ($stock->qty == 0)
+                    <td>
+                        <form action="/stock/{{ $stock->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger" id="button">Delete</button>
+                        </form>
+                    </td>
+                @else
+                    <td>
+                        <form action="/stock/{{ $stock->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger disabled" id="button">Delete</button>
+                        </form>
+                    </td>
+                @endif
             </tr>
+            @include('modal.stock.editmodal')
         @empty
             <x-alert></x-alert>
         @endforelse

@@ -6,7 +6,7 @@
         </div>
     </div>
     @include('modal.supplier.addmodal')
-    @include('modal.supplier.editmodal')
+
     <div class="pagination" style="margin-left:40%">
         {{ $suppliers->links() }}
     </div>

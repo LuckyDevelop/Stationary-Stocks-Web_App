@@ -21,13 +21,14 @@
     </thead>
     <tbody>
         @forelse($suppliers as $key => $supplier)
+            @include('modal.supplier.editmodal')
             <tr>
                 <th scope="row">
                     {{ $key + $suppliers->firstitem() }}</th>
                 <td>{{ $supplier->supp_name }}</td>
                 <td>{{ $supplier->address }}</td>
                 <td>
-                    <x-buttonedit target="#edit"></x-buttonedit>
+                    <x-buttonedit target="#edit-{{ $supplier->id }}"></x-buttonedit>
                     {{-- <a href="supplier/edit/{{ $supplier->id }}">Edit</a> --}}
                 </td>
                 <td>

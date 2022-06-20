@@ -66,11 +66,14 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $supplier = Supplier::find($id);
+        Supplier::find($id)->update([
+            'supp_name' => $request->supp_name,
+            'address' => $request->address
+        ]);
 
-        return view('modal.supplier.editmodal', compact('supplier'));
+        return redirect('/supplier');
     }
 
     /**

@@ -11,14 +11,14 @@
                      @csrf
 
                      <div class="form-floating mb-3">
-                         <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                             name="user" required>
-                             @foreach ($userusage as $usage)
-                                 <option value="{{ $usage->id }}">{{ $usage->user }}</option>
-                             @endforeach
-                         </select>
-                         <label for="floatingSelect">User</label>
-                     </div>
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                            name="user" required>
+                            @foreach ($userusage as $usage)
+                                <option value="{{ $usage->id }}">{{ $usage->user }}</option>
+                            @endforeach
+                        </select>
+                        <label for="floatingSelect">User</label>
+                    </div>
 
                      <div class="form-floating mb-3">
                          <input type="date" class="form-control" id="date" placeholder="Date Usage"

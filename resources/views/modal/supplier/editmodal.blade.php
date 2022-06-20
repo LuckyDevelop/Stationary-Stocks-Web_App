@@ -1,5 +1,5 @@
  <!-- Modal -->
- <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="edit-{{ $supplier->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog">
          <div class="modal-content">
              <div class="modal-header">
@@ -7,17 +7,18 @@
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
              </div>
              <div class="modal-body">
-                 <form action="{{ url('/supplier/edit') }}" method="POST">
-                     @csrf
-                     @method('put')
-                     <div class="form-floating mb-3">
-                         <input type="text" class="form-control" id="floatingSupplierName"
-                             placeholder="Supplier Name">
-                         <label for="floatingSupplierName">Supplier Name</label>
+                 <form action="/supplier/edit/{{ $supplier->id }}" method="POST">
+                    @csrf
+                    @method('put')
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="supp_name" name="supp_name"
+                             placeholder="Supplier Name" value="{{ $supplier->supp_name  }}" required>
+                         <label for="suppliername">Supplier Name</label>
                      </div>
                      <div class="form-floating mb-3">
-                         <input type="text" class="form-control" id="floatingaddress" placeholder="Address">
-                         <label for="floatingaddress">Address</label>
+                         <input type="text" class="form-control" id="address" name="address" placeholder="Address"
+                         value="{{ $supplier->address }}" required>
+                         <label for="address">Address</label>
                      </div>
              </div>
              <div class="modal-footer">

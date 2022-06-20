@@ -6,7 +6,6 @@
         </div>
     </div>
     @include('modal.stock.addmodal')
-    @include('modal.stock.editmodal')
     <div class="pagination">
         {{ $stocks->links() }}
     </div>

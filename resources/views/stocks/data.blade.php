@@ -7,7 +7,7 @@
                 Add Item
             </x-buttonadd>
         </x-containerfluid>
-        <x-formsearch target="#/stock">
+        <x-formsearch>
             <x-buttonsearch></x-buttonsearch>
         </x-formsearch>
     </x-navbarsub>

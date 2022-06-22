@@ -7,7 +7,7 @@
                 Add Usages
             </x-buttonadd>
         </x-containerfluid>
-        <x-formsearch target="#/search">
+        <x-formsearch>
             <x-buttonsearch></x-buttonsearch>
         </x-formsearch>
     </x-navbarsub>

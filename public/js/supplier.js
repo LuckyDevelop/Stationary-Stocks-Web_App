@@ -3,16 +3,16 @@ $(document).ready(function () {
     console.log('success');
 });
 
-let searchData = $('#search').serialize();
+function editData() {
 
-$.ajax({
-    url: `account-list/data?page=` + page,
-    method: 'GET',
-    data: searchData,
-    success: function (data) {
-        $('#data').html(data)
-    },
-    error: function (error) {
-        toastr['error']('Something Error');
-    }
-})
+}
+
+function deleteData() {
+    swal({
+        title: "Apakah Anda Yakin ingin menghapus data ini??",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+}

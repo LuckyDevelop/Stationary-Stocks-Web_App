@@ -1,4 +1,4 @@
-<form id="{{ $id }}">
-    <input class="form-control me-2" type="text" placeholder="Search..." onkeyup="{{ $function }}" name="search">
+<form id="search">
+    <input class="form-control me-2" type="text" placeholder="Search..." name="search">
     {{ $slot }}
 </form>

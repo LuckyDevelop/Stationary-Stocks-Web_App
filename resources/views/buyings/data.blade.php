@@ -7,7 +7,7 @@
                 Add Stocks
             </x-buttonadd>
         </x-containerfluid>
-        <x-formsearch target="#/buying">
+        <x-formsearch>
             <x-buttonsearch></x-buttonsearch>
         </x-formsearch>
     </x-navbarsub>

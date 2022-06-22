@@ -7,7 +7,7 @@
                 Add Supplier
             </x-buttonadd>
         </x-containerfluid>
-        <x-formsearch id="search" function="searchData()">
+        <x-formsearch function="searchData()">
             <x-buttonsearch></x-buttonsearch>
         </x-formsearch>
     </x-navbarsub>
@@ -31,6 +31,8 @@
                     <x-buttonedit target="#edit-{{ $supplier->id }}"></x-buttonedit>
                 </td>
                 <td>
+                    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+                    {{-- <button class="delete" data-id="{{ $supplier->id }}">Deleted</button> --}}
                     <x-formdelete action="/supplier/{{ $supplier->id }}" class="btn btn-danger"></x-formdelete>
                 </td>
             </tr>
